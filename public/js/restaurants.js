@@ -7,7 +7,7 @@ function getRestData() {
 	//get all the rest records into our rest array        
 	rest_array = JSON.parse(request.responseText);        
 	//Fetch the comments as well        
-	//fetchComments();
+	fetchComments();
 	console.log(rest_array) // output to console        
 };    
 
@@ -15,7 +15,7 @@ function getRestData() {
 request.send();}
 
 function displayRestaurants() {
-    var table = document.getElementById("restaurantTable");
+    var table = document.getElementById("restTable");
     var restCount = 0;
     var message = "";
 
@@ -33,13 +33,12 @@ function displayRestaurants() {
     }
 }
 
-message = restCount + " Restaurants " + category;
+message = restCount + " Restaurants " 
 document.getElementById("summary").textContent = message;
 document.getElementById("parent").textContent = "";
 
-function listAllRestHome() {
-    category = "Available";
-    displayRestaurants(category);
+function listAllRestHome() {;
+    displayRestaurants();
     document.getElementById("homeMenu").classList.add("active");
 }
 

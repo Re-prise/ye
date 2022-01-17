@@ -1,15 +1,17 @@
 <!DOCTYPE html>
-<div id="id01" class="modal">
+<div class="modal fade" id="registerModal" tabindex="-1" role="dialog">
   <!-- Modal Content -->
   <header style="background-color:inherit; color:black">
-  <span onclick="document.getElementById('id01').style.display='none'" class="close-button topright">&times;</span>
+  <span onclick="document.getElementById('registerModal').style.display='none'" class="close-button topright">&times;</span>
   </header>
+  <div class="modal-dialog modal-sm" role="document">
+  <div class="modal-content">
+      <div class="modal-body px-5">
   <form>
-    <div class="login-container">
-  
-      <button type="button" class="goToRegister" href="signup.html">Sign Up</button>
+      <a href="signup.html"> Sign Up </a>
 
-      <button type="button" class="goToLogin" href="login.html">Log In</button>
-      
+      <a href="login.html">Log In</a>
+      </div>
     </div>
+  </div>
   </form>

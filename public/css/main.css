@@ -68,10 +68,6 @@ input[type=text]:focus, input[type=password]:focus {
   opacity:1;
 }
 
-a {
-  color: dodgerblue;
-}
-
 .signin {
   background-color: #f1f1f1;
   text-align: center;
@@ -95,4 +91,13 @@ a {
   position: absolute;
   right: 0;
   top: 0
+}
+.navlink {
+  color: black; 
+  font-family: cursive;
+}
+
+.navlink:hover {
+  color: black;
+  
 }
