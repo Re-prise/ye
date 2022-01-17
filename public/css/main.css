@@ -1,0 +1,98 @@
+h6{
+    font-family:cursive;
+    padding: 2px;
+}
+h5{
+  font-family: cursive;
+}
+
+
+.btn-style{
+    background: none; 
+    border: none; 
+    padding-right: 10px; 
+    cursor: pointer;
+}
+.btn-style:hover{
+    background-color: rgb(211, 154, 164);
+}
+.btn-outline-success{
+    cursor: pointer;
+}
+
+* {box-sizing: border-box}
+
+.dropdown-menu {
+  width: 250px;
+  background-color: rgb(212, 157, 167);
+  outline: black, solid, 4px;
+}
+.filterboxes {
+  padding-left: 10px;
+}
+.filterrows {
+  padding-right: 10px;
+}
+
+.btn-outline-info {
+  cursor: pointer;
+  padding: 0px;
+}
+
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+.registerbtn {
+  background-color: #04AA6D;
+  color: white;
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+.registerbtn:hover {
+  opacity:1;
+}
+
+a {
+  color: dodgerblue;
+}
+
+.signin {
+  background-color: #f1f1f1;
+  text-align: center;
+}
+
+.close-button {
+  border: none;
+  display: inline-block;
+  padding: 8px 16px;
+  vertical-align: middle;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  background-color: inherit;
+  text-align: center;
+  cursor: pointer;
+  white-space: nowrap
+}
+
+.topright {
+  position: absolute;
+  right: 0;
+  top: 0
+}
