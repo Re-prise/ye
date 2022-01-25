@@ -34,7 +34,7 @@ function updateComment(request, respond){
     var review = request.body.review;
     var now = new Date();
     var upvotes = request.body.upvotes;
-    var _id = request.body._id;
+    var _id = request.params._id;
     commentsDB.updateComment(rating, review, now, upvotes, _id, function(error, result){
         if(error){
             respond.json(error);
@@ -90,6 +90,17 @@ function getCommentCount(request, respond){
     });
 }
 
+function getAllCommentsByRestOrderedDate(request, respond){
+    commentsDB.getAllCommentsByRestOrderedDate(function(error, result){
+        if(error){
+            respond.json(error);
+        }
+        else{
+            respond.json(result)
+        }
+    });
+}
 
 
-module.exports = { getAllComments, addComment, updateComment, deleteComment, getCommentsOrderedUpvotes, getCommentsByDatePosted, getCommentCount };
+
+module.exports = { getAllComments, addComment, updateComment, deleteComment, getCommentsOrderedUpvotes, getCommentsByDatePosted, getCommentCount, getAllCommentsByRestOrderedDate };

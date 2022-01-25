@@ -19,11 +19,12 @@ app.route('/getRestaurantByPrice/:price').get(restController.getRestaurantByPric
 //Comment Related vv
 app.route('/comments').get(commentController.getAllComments);   //GETS all comments
 app.route('/addComments').post(commentController.addComment);   //ADDS a comment
-app.route('/updateComments').put(commentController.updateComment);  //Updates a comment by comment ID
+app.route('/updateComments/:_id').put(commentController.updateComment);  //Updates a comment by comment ID
 app.route('/deleteComments/:_id').delete(commentController.deleteComment);   //Deletes a comment by comment ID
 app.route('/getCommentsOrderedUpvotes/:restId').get(commentController.getCommentsOrderedUpvotes); //GETS all comments from a restaurant and orders them by upvotes
 app.route('/getCommentsByDatePosted/:restId').get(commentController.getCommentsByDatePosted);   //Gets all comments or a restaurant sorted by earliest to latest
 app.route('/getCommentCount/:restId').get(commentController.getCommentCount); //GETS the total count of the reviews under the restaurant
+app.route('/getAllCommentsByRestOrderDate').get(commentController.getAllCommentsByRestOrderedDate);
 
 //User Related vv
 app.route('/userDetails').get(userController.getAllUser);   //GETS all user info
@@ -31,6 +32,7 @@ app.route('/changePassword/:userId').put(userController.changePassword);    //Ch
 app.route('/addUserDetails').post(userController.addUserDetails);   //ADDS a user
 app.route('/deleteUser/:userId').delete(userController.deleteUser); //DELETES a row of user details by userId
 app.route('/getPasswordByUsername/:username').get(userController.getPasswordByUser);    //Gets a User's Password by Username
+app.route('/loginUser').post(userController.loginUser);
 
 //Bookmark Related vv
 app.route('/addBookmark').post(bookmarkController.addBookmark); //ADDS a restId and userID to Bookmarks

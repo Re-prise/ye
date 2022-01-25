@@ -1,0 +1,28 @@
+<div class="card col-md-3" ><img class="card-img-top" src="' + thumbnail + '" alt="Card image cap">\
+                        <div class="card-body"><i class="far fa-comment fa-lg" style="float:left;cursor:pointer" data-toggle="modal" data-target="#commentModal" item="' + count + '" onClick="showRestComments(this)"></i>\
+                        <a><h5 style="padding-left:30px;cursor:pointer;" href="restaurants.html" class="card-title" item="' + count +'">' + restName + '</h5></a></div>\
+</div>
+
+<div class="card col-md-3" ><img class="card-img-top" src="' + thumbnail + '" alt="Card image cap">\
+    <div class="card-body"><i class="far fa-comment fa-lg" style="float:left;cursor:pointer" data-toggle="modal" data-target="#commentModal" item="' + count + '" onClick="showMovieComments(this)"></i>\
+    <h5 style="padding-left:30px;cursor:pointer" data-toggle="modal" data-target="#movieModal" class="card-title" item="' + count + '" onClick="showMovieDetails(this)">' + title + '</h5></div>\
+</div>
+
+<div class="text-center" style="width:100%;">                                                           \
+    <div class="card">                                                                                  \
+        <div class="card-body">                                                                         \
+            <small style='font-family: cursive;'>by " + comment_array[i].username + " @ " + comment_array[i].datePosted + "</small>   \
+            <p class="card-text" id="rating' + i + '">' + comment_array[i].review + '</p>
+
+        </div>                                                                                          \
+    </div>                                                                                              \
+</div>
+
+<div class="text-center" style="width:100%;">                                                           \
+    <div class="card">                                                                                  \
+        <div class="card-body">                                                                         \
+            <p class="card-text" id="rating' + i + '">' + comment_array[i].review + "</p>               \
+            <small>by " + comment_array[i].username + " @ " + comment_array[i].datePosted + "</small>   \
+        </div>                                                                                          \
+    </div>                                                                                              \
+</div>

@@ -7,40 +7,30 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/loginstyle.css">
+    <link ref="stylesheet" href="css/buttonstytle.css">
 
 </head>
-<body onload="getRestData()"> <!-- TODO: Implement getRestData Function-->
-    <!-- Include top navigation here -->
+<body onload="getRestData()">
     <div w3-include-html="top-navigation.html"></div>
-    <!-- This is the container that holds the initial message, heading, and movies -->
     <div class="container">
         <div class="row" id="parent">
             Placeholder Loading Text
         </div>
         <p>
-            <!-- This is the heading -->
         <h3 id="summary"></h3>
         </p>
-        <!-- Displays thumbnails of the movies here -->
         <div id="restTable" class="row"></div>
     </div>
-
- <div w3-include-html="restaurants-modal.html"></div>
  <div w3-include-html="comments-modal.html"></div>
  <div w3-include-html="new-comments-modal.html"></div>
  <div w3-include-html="edit-comments-modal.html"></div>
- <div w3-include-html="message-modal.html"></div>
- 
+ <div w3-include-html="restaurant-modal.html"></div>
  <br><br>
- <!-- Include the footer here -->
  <div w3-include-html="footer.html"></div>
 </body>
 
 <script src="https://www.w3schools.com/lib/w3.js"></script>
-<script>
-    //to bring in other HTML on the fly into this page
-    w3.includeHTML();
-</script>
+<script> w3.includeHTML();</script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 <script src="https://kit.fontawesome.com/86ec7c1143.js" ></script>

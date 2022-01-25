@@ -7,6 +7,11 @@ class UserDB{
         return db.query(sql, callback);
     }
 
+    loginUser(username, callback){
+        var sql = "SELECT password FROM restaurant_review.user_details WHERE username = ?"
+        db.query(sql,username, callback);
+    }
+
     changePassword(password, userId, callback){
         var sql = "UPDATE user_details SET password = ? WHERE userId = ?";
         return db.query(sql,[password, userId], callback);

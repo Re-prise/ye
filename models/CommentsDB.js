@@ -36,6 +36,11 @@ class CommentsDB{
         var sql = "SELECT COUNT(review) FROM restaurant_review.comments WHERE restID = ?";
         return db.query(sql, restId, callback);
     }
+
+    getAllCommentsByRestOrderedDate(callback){
+        var sql = "SELECT r.restId, r.rest_name, u.username, c._id, c.review, c.rating, c.upvotes, c.datePosted FROM restaurant_review.restaurant AS r, restaurant_review.comments AS c, restaurant_review.user_details AS u WHERE r.restId = c.restId AND c.userId = u.userId ORDER BY c.upvotes DESC;";
+        return db.query(sql, callback);
+    }
 }
 
 module.exports = CommentsDB;

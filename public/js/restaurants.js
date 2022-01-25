@@ -8,13 +8,15 @@ function getRestData() {
 	rest_array = JSON.parse(request.responseText);        
 	//Fetch the comments as well        
 	fetchComments();
-	console.log(rest_array) // output to console        
+	console.log(rest_array) // output to console   
+    
+    displayRestaurants(category)
 };    
 
 //This command starts the calling of the rest web api    
 request.send();}
 
-function displayRestaurants() {
+function displayRestaurants(category) {
     var table = document.getElementById("restTable");
     var restCount = 0;
     var message = "";
@@ -24,22 +26,34 @@ function displayRestaurants() {
     for (var count = 0; count < totalRest; count++) {
         var thumbnail = rest_array[count].rest_thumbnail;
         var restName = rest_array[count].rest_name;
-	var cell = '<div class="card col-md-3" ><img class="card-img-top" src="' + thumbnail + '" alt="Card image cap">\
-                        <div class="card-body"><i class="far fa-comment fa-lg" style="float:left;cursor:pointer" data-toggle="modal" data-target="#commentModal" item="' + count + '" onClick="showResttComments(this)"></i>\
-                        <h5 style="padding-left:30px;cursor:pointer" data-toggle="modal" data-target="#restModal" class="card-title" item="' + count + '" onClick="showRestDetails(this)">' + restName + '</h5></div>\
+	var cell = '<div class="card col-md-3"><img class="card-img-top" src="' + thumbnail + '" alt="Card image cap">\
+    <div class="card-body"><i class="far fa-comment fa-lg" style="float:left;cursor:pointer" data-toggle="modal" data-target="#commentModal" item="' + count + '" onClick="showRestComments(this)"></i>\
+    <a><h5 style="padding-left:30px;cursor:pointer;" data-toggle="modal" data-target="#restModal" class="card-title" item="' + count +'"onClick="showRestDetails(this)">' + restName + '</h5></a></div>\
 </div>'
         table.insertAdjacentHTML('beforeend', cell);
         restCount++;
     }
 }
 
-message = restCount + " Restaurants " 
-document.getElementById("summary").textContent = message;
+message = restCount + " Restaurants " + category;
+document.getElementById("summary").textContent = "";
 document.getElementById("parent").textContent = "";
 
 function listAllRestHome() {;
-    displayRestaurants();
+    category= "Now Showing";
+    displayRestaurants(category);
     document.getElementById("homeMenu").classList.add("active");
 }
 
+function showRestDetails(element) {
+    var item = element.getAttribute("item");
+    currentIndex = item;
+    document.getElementById("restName").textContent = rest_array[item].rest_name;
+    document.getElementById("restContact").textContent = rest_array[item].rest_contact;
+    document.getElementById("restLocation").textContent = rest_array[item].rest_location;
+    document.getElementById("restHrs").textContent = rest_array[item].rest_hrs;
+    document.getElementById("restWebsite").textContent = rest_array[item].webLink;
+    document.getElementById("restAbout").textContent = rest_array[item].rest_about;
+    document.getElementById("restThumbnail").src = rest_array[item].rest_thumbnail;
+}
 

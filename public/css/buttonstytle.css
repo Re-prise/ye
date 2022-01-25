@@ -1,0 +1,31 @@
+.registerbtn {
+    background-color: #04AA6D;
+    color: white;
+    padding: 16px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+}
+  
+.registerbtn:hover {
+    opacity:1;
+}
+
+.btn-outline-info {
+    cursor: pointer;
+    padding: 0px;
+}
+
+.btn-style:hover{
+    background-color: rgb(211, 154, 164);
+}
+
+.btn-outline-success{
+    cursor: pointer;
+}
+
+.close-btn:hover, .close-btn:active{
+    outline: none;
+}

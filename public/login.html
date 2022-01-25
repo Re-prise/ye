@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="css/loginstyle.css">
 </head>
 <body>
-    <form action="action_page.php">
+    <form action="/getPasswordByUsername/:username" method="submit" id="login">
     <div class="container-login">
       <h1 style="text-align: center; font-family: cursive;">Log In</h1>
       <p style="text-align: center; font-family: cursive;">welcome Back!</p>
@@ -24,7 +24,7 @@
     </div>
   
     <div style="text-align: center;">
-      <button type="submit" class="signUpbtn">Log In</button>
+      <button type="submit" class="signUpbtn" onclick="simpleAuthAlgo()">Log In</button>
       <p style="font-family: cursive;">Not a User? <a href="signup.html">Sign Up</a>.</p>
 
       <a style="font-family: cursive;" href="index.html"><button type="button" class="btn btn-danger">Cancel</button></a>

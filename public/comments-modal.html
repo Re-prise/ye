@@ -2,15 +2,16 @@
 <div class="modal fade" id="commentModal" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
-            <div class="modal-header bg-dark text-center">
-                <h5 class="modal-title text-light" id="review">Review</h5>
-	<button type="button" class="btn btn-primary" id="newComment" data-toggle="modal" data-target="#newCommentModal" data-dismiss="modal" onClick="newComment()">New Comment</button>
+            <div class="modal-header text-center" style="background-color: skyblue;">
+                <h5 class="modal-title" id="review" style="font-family: cursive; color: black">Review</h5>
+	<button type="button" class="btn btn-style"id="newComment" data-toggle="modal" data-target="#newCommentModal" data-dismiss="modal" onClick="newComment()" 
+    style="background-color: pink;font-family: cursive;">New Comment</button>
             </div>
             <div class="modal-body">
-                <div id="emptyComment">No review yet. Create one now</div>
-                <div class="row px-5" id="commentBody"></div>
+                <div id="emptyComment" style="font-family: cursive;">No review as of now, do leave a review!</div>
+                <div class="row px-5" id="commentBody" style="font-family: cursive;"></div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary bg-dark" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-style" data-dismiss="modal" style="background-color: pink; font-family: cursive;">Close</button>
                 </div>
             </div>
         </div>

@@ -6,56 +6,73 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="cursor: pointer;">
-          <img src="images/FilterList.png" height="30" width="30">
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <h5 style="text-align:center"><u>Cuisines</u></h5>
-          <span class="filterboxes"><input type="checkbox" id="Cuisine-Cafe" value="Cafe"></span>
-            <label for= "cafe"><h6>Cafe</h6></label>
-          <span class="filterboxes"><input type="checkbox" id="Cuisine-Chinese" value="Chinese"></span>
-            <label for = "Chinese"><h6>Chinese</h6></label>
-          <span class="filterboxes"><input type="checkbox" id="Cuisine-Mexican" value="Mexican"></span>
-            <label for = "Mexican"><h6>Mexican</h6></label>
-          <span class="filterboxes"><input type="checkbox" id="Cuisine-Italian" value="Italian"></span>
-            <label for = "Italian"><h6>Italian</h6></label>
-        <div class="dropdown-divider"></div>
-
-          <h5 style="text-align:center"><u>Locations</u></h5>
-          <span class="filterboxes"><input type="checkbox" id="Location-Central" value="Central"></span>
-            <label><h6>Central</h6></label>
-          <span class="filterboxes"><input type="checkbox" id="Location-East" value="East"></span>
-            <label><h6>East</h6></label>
-          <span class="filterboxes"><input type="checkbox" id="Location-North" value="North"></span>
-            <label><h6>North</h6></label>
-          <span class="filterboxes"><input type="checkbox" id="Location-South" value="South"></span>
-            <label><h6>South</h6></label>
-          <span class="filterboxes"><input type="checkbox" id="Location-West" value="West"></span>
-            <label><h6>West</h6></label>
-          
-        <div class="dropdown-divider"></div>
-
-        <h5 style="text-align:center"><u>Price</u></h5>
-        <span class="filterboxes"></span><input type="checkbox" id="Price-5" value="5"></span>
-          <label><h6>$$$$$</h6></label>
-        <span class="filterboxes"><input type="checkbox" id="Price-4" value="4"></span>
-          <label><h6>$$$$</h6></label>
-        <span class="filterboxes"><input type="checkbox" id="Price-3" value="3"></span>
-          <label><h6>$$$</h6></label>
-        <span class="filterboxes"><input type="checkbox" id="Price-2" value="2"></span>
-          <label><h6>$$</h6></label>
-        <span class="filterboxes"><input type="checkbox" id="Price-1" value="1"></span>
-          <label><h6>$</h6></label>
-        </div>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="index.html"><h5>R&R</h5></a>
-      </li>
+      <img src="images/R&R.png">
     </ul>
+    <ul style="list-style: none;">
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="cursor: pointer; padding-top: 20px;">
+        <img src="images/FilterList.png" height="30px" width="30px">
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <h5 style="text-align:center"><u>Cuisines</u></h5>
+        <div class="col-sm-12">
+        <span class="filterboxes"><input type="checkbox" id="Cuisine-Cafe" value="Cafe"></span>
+          <label for= "cafe"><h6>Cafe</h6></label>
+        <span class="filterboxes"><input type="checkbox" id="Cuisine-Chinese" value="Chinese"></span>
+          <label for = "Chinese"><h6>Chinese</h6></label>
+        </div>
+        <div class="col-sm-12">
+        <span class="filterboxes"><input type="checkbox" id="Cuisine-Mexican" value="Mexican"></span>
+          <label for = "Mexican"><h6>Mexican</h6></label>
+        <span class="filterboxes"><input type="checkbox" id="Cuisine-Italian" value="Italian"></span>
+          <label for = "Italian"><h6>Italian</h6></label>
+        </div>
+        
+      <div class="dropdown-divider"></div>
+
+        <h5 style="text-align:center"><u>Locations</u></h5>
+        <div class="col-sm-12">
+        <span class="filterboxes"><input type="checkbox" id="Location-Central" value="Central"></span>
+          <label><h6>Central</h6></label>
+        <span class="filterboxes"><input type="checkbox" id="Location-East" value="East"></span>
+          <label><h6>East</h6></label>
+        </div>
+        <div class="col-sm-12">
+        <span class="filterboxes"><input type="checkbox" id="Location-North" value="North"></span>
+          <label><h6>North</h6></label>
+        <span class="filterboxes"><input type="checkbox" id="Location-South" value="South"></span>
+          <label><h6>South</h6></label>
+        </div>
+        <div class="col-sm-12">
+        <span class="filterboxes"><input type="checkbox" id="Location-West" value="West"></span>
+          <label><h6>West</h6></label>
+        </div>
+        
+      <div class="dropdown-divider"></div>
+
+      <h5 style="text-align:center"><u>Price</u></h5>
+      <div class="col-sm-12">
+      <span class="filterboxes"></span><input type="checkbox" id="Price-5" value="5"></span>
+        <label><h6>$$$$$</h6></label>
+      <span class="filterboxes"><input type="checkbox" id="Price-4" value="4"></span>
+        <label><h6>$$$$</h6></label>
+      </div>
+      <div class="col-sm-12">
+      <span class="filterboxes"><input type="checkbox" id="Price-3" value="3"></span>
+        <label><h6>$$$</h6></label>
+      <span class="filterboxes"><input type="checkbox" id="Price-2" value="2"></span>
+        <label><h6>$$</h6></label>
+      </div>
+      <div class="col-sm-12">
+      <span class="filterboxes"><input type="checkbox" id="Price-1" value="1"></span>
+        <label><h6>$</h6></label>
+      </div>
+      </div>
+    </li>
+  </ul>
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button type="submit" class="btn-style">
+      <button type="submit" class="btn-style" style="background: none; border: none; padding-right: 10px; cursor: pointer;">
         <img src="images/search.png" height="30" width="30">
       </button>
     </form>
