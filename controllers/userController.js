@@ -22,22 +22,28 @@ function getAllUser(request, respond){
 function changePassword(request, respond){
     var userId = parseInt(request.params.userId);
     var password = request.body.password;
-    password = bcrypt.hashSync(password, 1)
-    userDB.changePassword(password, userId, function(error, result){
-        if(error){
-            respond.json(error);
-        }
-        else{
-            respond.json(result);
-        }
-    });
+    var token = request.body.token;
+    try {
+        var decoded = jwt.verify(token, secret);
+        userDB.changePassword(password, userId, function(error, result){
+            if(error){
+                respond.json(error);
+            }
+            else{
+                respond.json(result);
+            }
+        });
+    } catch (error){
+        respond.json({result:"invalid token"});
+    } 
 }
 
 function addUserDetails(request, respond){
     var username = request.body.username;
     var password = request.body.password;
     var email_add = request.body.email_add;
-    password = bcrypt.hashSync(password, 1)
+    password = bcrypt.hashSync(password, 10);
+    console.log(password)
     userDB.addUserDetails(username, password, email_add, function(error, result){
         if(error){
             respond.json(error);

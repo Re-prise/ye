@@ -163,14 +163,14 @@ function updateComment() {
     var updateComment = new XMLHttpRequest(); // new HttpRequest instance to send request to server
     updateComment.open("PUT", edit_comment_url, true); //The HTTP method called 'PUT' is used here as we are updating data
     updateComment.setRequestHeader("Content-Type", "application/json");
-    comment_array[currentIndex].review = document.getElementById("editreview").value;
+    comment_array[currentIndex].review = document.getElementById("edituserreview").value;
     comment_array[currentIndex].rating = rating;
     updateComment.onload = function() {
     fetchComments();
     };
     updateComment.send(JSON.stringify(comment_array[currentIndex]));
     }
-    }
+}
 
 //This function deletes the selected comment in a specific movie
 function deleteComment(element) {

@@ -57,3 +57,6 @@ function showRestDetails(element) {
     document.getElementById("restThumbnail").src = rest_array[item].rest_thumbnail;
 }
 
+function toWebsite() {
+    window.open(rest_array[currentIndex].webLink, "_blank");
+}

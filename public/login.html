@@ -7,12 +7,13 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/loginstyle.css">
+    <link rel="icon" href="images/icon.jpg">
 </head>
 <body>
     <form action="/getPasswordByUsername/:username" method="submit" id="login">
     <div class="container-login">
       <h1 style="text-align: center; font-family: cursive;">Log In</h1>
-      <p style="text-align: center; font-family: cursive;">welcome Back!</p>
+      <p style="text-align: center; font-family: cursive;">Welcome Back!</p>
       <hr>
         
       <label for="username"><b style="font-family: cursive;">Username</b></label>
@@ -24,7 +25,7 @@
     </div>
   
     <div style="text-align: center;">
-      <button type="submit" class="signUpbtn" onclick="simpleAuthAlgo()">Log In</button>
+      <button type="submit" class="signUpbtn" onclick="login()">Log In</button>
       <p style="font-family: cursive;">Not a User? <a href="signup.html">Sign Up</a>.</p>
 
       <a style="font-family: cursive;" href="index.html"><button type="button" class="btn btn-danger">Cancel</button></a>
