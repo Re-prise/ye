@@ -28,7 +28,7 @@ class CommentsDB{
     }
 
     getCommentsByDatePosted(restId, callback){
-        var sql = "SELECT r.rest_name, c.review, c.rating, c.datePosted, c.upvotes FROM restaurant_review.restaurant AS r, restaurant_review.comments AS c WHERE r.restId = c.restId AND r.restId = ? ORDER BY c.datePosted DESC";
+        var sql = "SELECT c.restId, r.rest_name, c.review, c.rating, c.datePosted, c.upvotes FROM restaurant_review.restaurant AS r, restaurant_review.comments AS c WHERE r.restId = c.restId AND r.restId = ? ORDER BY c.datePosted DESC";
         db.query(sql, restId, callback)
     }
 

@@ -17,7 +17,8 @@ function getAllRestaurant(request, respond){
 }
 
 function getRestaurantBySearch(request, respond){
-    restDB.getRestaurantBySearch(request.params.search, function(error, result){
+    var search = request.body.search
+    restDB.getRestaurantBySearch(search, function(error, result){
         if(error){
             respond.json(error);
         }

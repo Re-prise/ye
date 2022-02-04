@@ -13,7 +13,7 @@
 
     <form id="signup">
     <div class="container-login">
-      <h1 style="text-align: center; font-family: cursive;">Sign Up</h1>
+      <h1 style="text-align: center; font-family: cursive;"><b>Sign Up</b></h1>
       <p style="text-align: center; font-family: cursive;">It's free, and you can deactivate your account if you change your mind!</p>
       <hr>
         
@@ -22,6 +22,26 @@
 
       <label for="email"><b style="font-family: cursive;">Email</b></label>
       <input type="text" placeholder="Email" name="email" id="signinemail" required>
+
+      <label for="firstname"><b style="font-family: cursive;">First-Name</b></label>
+      <input type="text" placeholder="First-Name" name="firstname" id="signinfirstname" required>
+
+      <label for="lastname"><b style="font-family: cursive;">Last-Name</b></label>
+      <input type="text" placeholder="Last-Name" name="lastname" id="signinlastname" required>
+
+      <label for="phnumber" style="padding-right: 15px;"><b style="font-family: cursive;;">Phone Number</b></label>
+      <input type="tel" placeholder="1234-5678" name="phnumber" id="signinphnumber" pattern="[0-9]{4}-[0-9]{4}" required><br><br>
+
+      <label for="address"><b style="font-family: cursive;">Address</b></label>
+      <input type="text" placeholder="Address" name="address" id="signinaddress" required>
+      
+      <label for="gender"><b style="font-family: cursive;">Select your gender</b></label>
+        <select name="gender" id="signingender">
+	      <option value="none" selected>Gender</option>
+	      <option value="male" style="font-family: cursive;">Male</option>
+	      <option value="female" style="font-family: cursive;">Female</option>
+	      <option value="other" style="font-family: cursive;">Others</option>
+      </select> <br><br>
   
       <label for="password"><b style="font-family: cursive;">Password</b></label>
       <input type="password" placeholder="Password" name="password" id="signinpassword" required>
@@ -38,6 +58,7 @@
       <a style="font-family: cursive;" href="index.html"><button type="button" class="btn btn-danger">Cancel</button></a>
     </div>
     </form>
+    <div w3-include-html="success-modal.html"></div>
 </body>
 <script src="https://www.w3schools.com/lib/w3.js"></script>
 <script> w3.includeHTML();</script>

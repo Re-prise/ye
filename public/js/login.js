@@ -1,52 +1,64 @@
-// function login() {
-//         var username = login_array[count].username;
-//         var password = login_array[count].password;
+function login() {
 
+    var loginUser = new XMLHttpRequest(); // new HttpRequest instance to send comment
 
-//         usernameinput //replace this w wtv u gg key in for ur username textbox
-//         passwordinput //replace this w wtv u gg key in for ur password textbox
+    loginUser.open("POST", "/loginUser", true); //Use the HTTP POST method to send data to server
 
-//         for (var count=0; count < username.length; count++) {
-//             if (document.getElementById('username').value == username[count]){
-//                 console.log("Username matches");
-//                 if (document.getElementById('password').value == password[count]){
-//                     console.log("Welcome! You're now authenticated");
-//                     //add ur localstorage thingy here
-//                     //redirect ur user to the home page
-//                     return;
-//                 }
-//                 else{
-//                     console.log("Invalid password!");
-//                     return;
-//                 }
-//             }
-//             else if (count == username.length-1) {
-//                 console.log("Invalid username/password!");
-//                 return;
-//             }
-//         }
-// }
+    loginUser.setRequestHeader("Content-Type", "application/json");
+    username = document.getElementById("loginusername").value;
+    password = document.getElementById("loginpassword").value;
+
+    loginUser.onload=function () {
+        var token = JSON.parse(loginUser.responseText);
+        console.log(token.result);
+        if (token.result != "Invalid" && token.result != "Non-existent"){
+            localStorage.setItem("token", token.result);
+            window.location.href = "index.html";
+            $('#displaytopusername').show();
+            document.getElementById('newComment').style.display("block")
+        } else{
+            alert("Invalid Login Details")
+            console.log("fail")
+        }  
+    }
+
+    var payload = {username:username, password:password}
+    loginUser.send(JSON.stringify(payload)); 
+}
 
 function addUser() {
-    username = document.getElementById("signinusername").value;
-    password = document.getElementById("signinpassword").value;
-    email_add = document.getElementById("signinemail").value;
-
-    var payload = {username:username, password:password, email_add:email_add}
-    console.log(username, password, email_add)
-
     var registerUser = new XMLHttpRequest(); // new HttpRequest instance to send comment
 
     registerUser.open("POST", "/addUserDetails", true); //Use the HTTP POST method to send data to server
 
     registerUser.setRequestHeader("Content-Type", "application/json");
-    registerUser.onload = function() {
+    registerUser.onload = function () {
         setTimeout(function () {
-            window.location.href = "index.html";
-          }, 1000);
-        console.log("register ok");
+            // console.log("ok");
+            alert("Success! Please Log In.")
+            window.location.href = "login.html";
+        }, 1000);
     }
+    username = document.getElementById("signinusername").value;
+    password = document.getElementById("signinpassword").value;
+    email_add = document.getElementById("signinemail").value;
+    First_name = document.getElementById("signinfirstname").value;
+    Last_name = document.getElementById("signinlastname").value;
+    Mobile_Num = document.getElementById("signinphnumber").value;
+    Address = document.getElementById("signinaddress").value;
+    Gender = document.getElementById("signingender").value;
 
+
+    var payload = {username:username, password:password, email_add:email_add, First_name:First_name, Last_name:Last_name, Mobile_Num:Mobile_Num, Address:Address, Gender:Gender}
     console.log(JSON.stringify(payload));
     registerUser.send(JSON.stringify(payload)); 
+}
+
+function logout(){
+    $('#login').show();
+    $('#dropdownProfile').hide();
+    $('#displaytopusername').hide();
+    localStorage.removeItem("token");
+    localStorage.removeItem("userId");
+    localStorage.removeItem("username");
 }

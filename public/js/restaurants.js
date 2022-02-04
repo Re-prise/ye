@@ -10,16 +10,14 @@ function getRestData() {
 	fetchComments();
 	console.log(rest_array) // output to console   
     
-    displayRestaurants(category)
+    displayRestaurants()
 };    
 
 //This command starts the calling of the rest web api    
 request.send();}
 
-function displayRestaurants(category) {
+function displayRestaurants() {
     var table = document.getElementById("restTable");
-    var restCount = 0;
-    var message = "";
 
     table.innerHTML = "";
     totalRest = rest_array.length;
@@ -29,25 +27,15 @@ function displayRestaurants(category) {
 	var cell = '<div class="card col-md-3"><img class="card-img-top" src="' + thumbnail + '" alt="Card image cap">\
     <div class="card-body"><i class="far fa-comment fa-lg" style="float:left;cursor:pointer" data-toggle="modal" data-target="#commentModal" item="' + count + '" onClick="showRestComments(this)"></i>\
     <a><h5 style="padding-left:30px;cursor:pointer;" data-toggle="modal" data-target="#restModal" class="card-title" item="' + count +'"onClick="showRestDetails(this)">' + restName + '</h5></a></div>\
-</div>'
+    </div>'
         table.insertAdjacentHTML('beforeend', cell);
-        restCount++;
     }
-}
-
-message = restCount + " Restaurants " + category;
-document.getElementById("summary").textContent = "";
-document.getElementById("parent").textContent = "";
-
-function listAllRestHome() {;
-    category= "Now Showing";
-    displayRestaurants(category);
-    document.getElementById("homeMenu").classList.add("active");
 }
 
 function showRestDetails(element) {
     var item = element.getAttribute("item");
     currentIndex = item;
+    localStorage["restId"] = rest_array[item].restId;
     document.getElementById("restName").textContent = rest_array[item].rest_name;
     document.getElementById("restContact").textContent = rest_array[item].rest_contact;
     document.getElementById("restLocation").textContent = rest_array[item].rest_location;
@@ -58,5 +46,11 @@ function showRestDetails(element) {
 }
 
 function toWebsite() {
-    window.open(rest_array[currentIndex].webLink, "_blank");
+    var checktext = "No website could be found for this particular restaurant!"
+    if (rest_array[currentIndex].webLink == checktext){
+        alert("There is no available website!");
+    } else {
+        window.open(rest_array[currentIndex].webLink, "_blank");
+    }
+
 }

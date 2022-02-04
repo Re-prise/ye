@@ -15,4 +15,6 @@ var ratingImage = 'images/ratingfilled.png';
 var rating = 0;
 
 var login_array = [];
-var user_url = "/userDetails"
+var user_url = "/userDetails";
+var deluser_url = "/deleteUser"
+var user_array = [];

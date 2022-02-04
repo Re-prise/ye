@@ -12,7 +12,7 @@ app.use(express.json());
 
 //Restaurant Related vv
 app.route('/restaurant').get(restController.getAllRestaurant);  //GETS all restaurants' info (maybe implement function that gets rest info by ID)
-app.route('/getRestaurant/:search').get(restController.getRestaurantBySearch);  //Search through restaurants by rest_name
+app.route('/getRestaurant').post(restController.getRestaurantBySearch);  //Search through restaurants by rest_name
 app.route('/getRestaurantByLocation/:zone').get(restController.getRestaurantByLocationZone); //GETS restaurants by Location(zone)
 app.route('/getRestaurantByPrice/:price').get(restController.getRestaurantByPrice);   //GETS restaurants by Price
 
@@ -28,6 +28,7 @@ app.route('/getAllCommentsByRestOrderDate').get(commentController.getAllComments
 
 //User Related vv
 app.route('/userDetails').get(userController.getAllUser);   //GETS all user info
+app.route('/getUser').post(userController.getUser);
 app.route('/changePassword/:userId').put(userController.changePassword);    //Changes user password by user ID
 app.route('/addUserDetails').post(userController.addUserDetails);   //ADDS a user
 app.route('/deleteUser/:userId').delete(userController.deleteUser); //DELETES a row of user details by userId

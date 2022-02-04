@@ -12,8 +12,6 @@ function fetchComments() {
     request.send();
 }
 
-//This function is to display all the comments of that movie
-//whenever the user click on the "comment" button
 function showRestComments(element) {
     document.getElementById("emptyComment").innerHTML = "No review yet. Create one now";
     var item = element.getAttribute("item");
@@ -24,13 +22,14 @@ function showRestComments(element) {
     for (var i = 0; i < comment_array.length; i++) {
         if (comment_array[i].rest_name === rest_array[item].rest_name) {
             document.getElementById("emptyComment").innerHTML = "";
+            localStorage["restId"] = rest_array[item].restId;
             selectedRestId = rest_array[item].restId;
             var star = "";
             var html = '<div class="text-center" style="width:100%;">                                                           \
                             <div class="card">                                                                                  \
                                 <div class="card-body">                                                                         \
                                     <p class="card-text" id="rating' + i + '">' + comment_array[i].review + "</p>               \
-                                    <p class='card-text' id='upvotes'" + i + ">" + comment_array[i].upvotes + "<img style='width: 20px' src='/images/thumbsup.png'/><p>\
+                                    <p class='card-text' id='upvotes'" + i + ">" + comment_array[i].upvotes + "<button style='background-color: inherit; color: none; border:none; outline:none; cursor: pointer' onClick='upvote(this)'><img style='width: 20px' src='/images/thumbsup.png'/></button><p>\
                                     <small> By: " + comment_array[i].username + " @ " + comment_array[i].datePosted + "</small>   \
                                 </div>                                                                                          \
                             </div>                                                                                              \
@@ -38,29 +37,37 @@ function showRestComments(element) {
             document.getElementById("commentBody").insertAdjacentHTML('beforeend', html);
 
             for (var j = 0; j < comment_array[i].rating; j++) {
-                console.log(i);
                 star += "<img style='width: 40px; padding-right: 5px; float: left;' src='images/ratingfilled.png'/>";
             }
-            star += "<i style='float: right' class='far fa-trash-alt fa-2x edit' data-dismiss='modal' item='" + i + "' onClick='deleteComment(this)' ></i>";
-            star += "<i style='float: right' class='far fa-edit fa-2x edit' data-toggle='modal' data-target='#editCommentModal' data-dismiss='modal' item='" + i + "' onClick='editComment(this)' ></i>";
+            star += "<i id='removeComment" + i + "' style='float: right' class='far fa-trash-alt fa-2x edit' data-dismiss='modal' item='" + i + "' onClick='deleteComment(this)' ></i>";
+            star += "<i id='editComment" + i + "' style='float: right' class='far fa-edit fa-2x edit' data-toggle='modal' data-target='#editCommentModal' data-dismiss='modal' item='" + i + "' onClick='editComment(this)' ></i>";
             
             document.getElementById("rating" + i).insertAdjacentHTML('beforebegin', star + "<br/>");
+            
+            if (comment_array[i].username != localStorage["username"]){
+                $('#newComment').hide()
+                document.getElementById("removeComment" + i).style.display="none";
+                document.getElementById("editComment" + i).style.display="none";
+            } else {
+                $('#newComment').show()
+                document.getElementById("removeComment" + i).style.display="block";
+                document.getElementById("editComment" + i).style.display="block";
+            }
         }
     }
 }
 
 function newComment() {
-    //Initialise each HTML input elements in the modal window with default value.
         rating = 0;
         document.getElementById("userreview").value = "";
         upvotes = 0;
-    }
+}
 
 // Submit or send the new comment to the server to be added.
 function addComment() {
     var comment = new Object();
-    comment.restId = rest_array[currentIndex].restId; // Movie ID is required by server to create new comment 
-    comment.userId = 2 // this should be the userId .For now is a placeholder
+    comment.restId = localStorage["restId"]; // Movie ID is required by server to create new comment 
+    comment.userId = localStorage["userId"]
     comment.rating = rating;
     comment.review = document.getElementById("userreview").value; // Value from HTML input text
     comment.datePosted = null; // Change the datePosted to null instead of taking the timestamp on the client side;
@@ -79,9 +86,7 @@ function addComment() {
     postComment.send(JSON.stringify(comment)); 
     console.log(JSON.stringify(comment))
 }
- 
-//This function allows the user to mouse hover the black and white popcorn
-//so that it will turn to a colored version when hovered
+
 function rateIt(element) {
     var num = element.getAttribute("value");
     var classname = element.getAttribute("class");
@@ -96,8 +101,7 @@ function rateIt(element) {
     changeRatingImage(num, classTarget);
 }
 
-// This function sets the rating and coloured images based on the value of the image tag when  
-// the mouse cursor hovers over the popcorn image.
+
 function changeRatingImage(num, classTarget) {
     switch (eval(num)) {
         case 1:
@@ -133,8 +137,7 @@ function changeRatingImage(num, classTarget) {
     }
 }
 
-//This function will hide the existing modal and present a modal with the selected comment
-//so that the user can attempt to change the username, rating or movie review
+
 function editComment(element) {
     var item = element.getAttribute("item");
     currentIndex = item;
@@ -144,8 +147,7 @@ function editComment(element) {
     
 }
 
-//This function displayS the correct number of colored popcorn
-//based on the movie rating that is given in the user comment
+
 function displayColorRatingsq(classname, num) {
     var sq = document.getElementsByClassName(classname);
     var classTarget = "." + classname;
@@ -155,13 +157,13 @@ function displayColorRatingsq(classname, num) {
     changeRatingImage(num, classTarget);
     }
     
-//This function sends the Comment data to the server for updating
+
 function updateComment() {
     var response = confirm("Do you want to edit this review?");
     if (response == true) {
     var edit_comment_url = editcomment_url + "/" + comment_array[currentIndex]._id;
-    var updateComment = new XMLHttpRequest(); // new HttpRequest instance to send request to server
-    updateComment.open("PUT", edit_comment_url, true); //The HTTP method called 'PUT' is used here as we are updating data
+    var updateComment = new XMLHttpRequest(); 
+    updateComment.open("PUT", edit_comment_url, true); 
     updateComment.setRequestHeader("Content-Type", "application/json");
     comment_array[currentIndex].review = document.getElementById("edituserreview").value;
     comment_array[currentIndex].rating = rating;
@@ -172,12 +174,11 @@ function updateComment() {
     }
 }
 
-//This function deletes the selected comment in a specific movie
 function deleteComment(element) {
     var response = confirm("Are you sure you want to delete this comment?");
 
     if (response == true) {
-        var item = element.getAttribute("item"); //get the current item
+        var item = element.getAttribute("item"); 
         var delete_comment_url = delcomment_url + "/" + comment_array[item]._id;
         var eraseComment = new XMLHttpRequest();
         eraseComment.open("DELETE", delete_comment_url, true);
