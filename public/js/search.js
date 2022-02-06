@@ -8,7 +8,6 @@ function getSearchData() {
     var payload = {search : search};
   
     request.send(JSON.stringify(payload));
-    console.log("Payload is", JSON.stringify(payload))
   
     request.onload = function () {
       search_array = JSON.parse(request.responseText);
@@ -19,7 +18,6 @@ function getSearchData() {
       restTable.innerHTML = "";
     
       var table = document.getElementById("restTable");
-      var restCount = 0;
   
       totalRest = search_array.length;
       for (var count = 0; count < totalRest; count++) {

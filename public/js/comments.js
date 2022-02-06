@@ -45,11 +45,9 @@ function showRestComments(element) {
             document.getElementById("rating" + i).insertAdjacentHTML('beforebegin', star + "<br/>");
             
             if (comment_array[i].username != localStorage["username"]){
-                $('#newComment').hide()
                 document.getElementById("removeComment" + i).style.display="none";
                 document.getElementById("editComment" + i).style.display="none";
             } else {
-                $('#newComment').show()
                 document.getElementById("removeComment" + i).style.display="block";
                 document.getElementById("editComment" + i).style.display="block";
             }
@@ -58,9 +56,15 @@ function showRestComments(element) {
 }
 
 function newComment() {
-        rating = 0;
-        document.getElementById("userreview").value = "";
-        upvotes = 0;
+    if (token != null){
+       rating = 0;
+    document.getElementById("userreview").value = "";
+    upvotes = 0; 
+    } else {
+        $('#newCommentModal').hide()
+        alert("You have to be logged in to make a comment!")
+    }
+    
 }
 
 // Submit or send the new comment to the server to be added.
@@ -84,7 +88,6 @@ function addComment() {
 	fetchComments(); // fetch all comments again so that the web page can have updated comments.     
     };
     postComment.send(JSON.stringify(comment)); 
-    console.log(JSON.stringify(comment))
 }
 
 function rateIt(element) {
@@ -92,9 +95,7 @@ function rateIt(element) {
     var classname = element.getAttribute("class");
     var ratingsqs = document.getElementsByClassName(classname);
     var classTarget = "." + classname;
-
-    // This is another way of writing 'for' loop, which initialises the 
-    // popcorn images to use black and white.
+    
     for (let ratingsq of ratingsqs){
         ratingsq.setAttribute("src", ratingBWImage);
     }
@@ -137,14 +138,11 @@ function changeRatingImage(num, classTarget) {
     }
 }
 
-
 function editComment(element) {
     var item = element.getAttribute("item");
     currentIndex = item;
-
     document.getElementById("edituserreview").value = comment_array[item].review;
     displayColorRatingsq('editsq', comment_array[item].rating);
-    
 }
 
 

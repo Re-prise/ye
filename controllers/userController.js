@@ -87,8 +87,7 @@ function loginUser(request, respond){
     userDB.loginUser(username, function(error, result){
         if(error){
             respond.json(error);
-        }
-        else{
+        } else {
             const hash = result[0].password;
             var flag = bcrypt.compareSync(password, hash);
             if(flag){

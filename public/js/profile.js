@@ -38,8 +38,13 @@ function deactivate(){
       var deactivateAcc = new XMLHttpRequest();
       deactivateAcc.open("DELETE", delete_user_url, true);
       deactivateAcc.onload = function() {
-          logout()
-          window.location.href = "index.html";
+        $('#login').show();
+        $('#dropdownProfile').hide();
+        $('#displaytopusername').hide();
+        localStorage.removeItem("token");
+        localStorage.removeItem("userId");
+        localStorage.removeItem("username");
+        window.location.href = "index.html";
       };
       deactivateAcc.send();
     }
